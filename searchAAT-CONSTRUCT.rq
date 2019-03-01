@@ -1,0 +1,36 @@
+#+ summary: Construct graph by full-text search in Getty's AAT. Developed for demo.netwerkdigitaalerfgoed.nl.
+#+ endpoint: http://vocab.getty.edu/sparql.rdf
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX aat: <http://vocab.getty.edu/aat/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skosxl: <http://www.w3.org/2008/05/skos-xl#>
+PREFIX gvp: <http://vocab.getty.edu/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX luc: <http://www.ontotext.com/owlim/lucene#>
+
+CONSTRUCT {
+    ?uri skos:prefLabel ?prefLabel .
+    ?uri skos:altLabel ?altLabel  .
+    ?uri skos:scopeNote ?scopeNote .    
+}
+WHERE  {
+  ?uri luc:term "*wiel"; a ?typ.
+  ?typ rdfs:subClassOf gvp:Subject .
+  FILTER (?typ != gvp:Subject) .
+
+  ?uri skosxl:prefLabel ?mainLabel .
+  ?mainLabel dcterms:language aat:300388256 .
+  ?mainLabel skosxl:literalForm ?prefLabel .
+
+  OPTIONAL {
+    ?uri skosxl:altLabel ?subLabel .
+    ?subLabel dcterms:language aat:300388256 .
+    ?subLabel skosxl:literalForm ?altLabel .
+    }
+  
+  ?uri skos:scopeNote ?sn .
+  ?sn dcterms:language aat:300388256 .
+  ?sn rdf:value ?scopeNote .
+}

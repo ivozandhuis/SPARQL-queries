@@ -1,0 +1,6 @@
+#+ summary: Get all Classes
+#+ endpoint: <choose>
+
+SELECT ?class COUNT(?class) AS ?classCount WHERE {
+  ?sub a ?class .
+} ORDER BY DESC(?classCount)

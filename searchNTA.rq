@@ -1,0 +1,12 @@
+#+ summary: Find "Wolkers" in the Nederlandse Thesaurus van Auteursnamen (NTA)
+#+ endpoint: http://data.bibliotheken.nl/sparql
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+
+SELECT * WHERE {
+  ?person foaf:isPrimaryTopicOf/void:inDataset <http://data.bibliotheken.nl/id/dataset/persons> .
+  ?person rdfs:label ?name .
+  FILTER(REGEX(?name, "Wolkers"))
+}

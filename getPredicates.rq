@@ -1,0 +1,6 @@
+#+ summary: Get all Predicates
+#+ endpoint: <choose>
+
+SELECT ?pred COUNT(?pred) AS ?predCount WHERE {
+  ?sub ?pred ?obj .
+} ORDER BY DESC(?predCount)
