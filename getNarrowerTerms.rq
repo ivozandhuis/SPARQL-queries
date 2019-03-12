@@ -1,0 +1,11 @@
+#+ summary: Get all narrower-terms in the branch of a SKOS-thesaurus.
+#+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT * WHERE {
+   ?term a skos:Concept .
+   <https://digitaalerfgoed.poolparty.biz/svcn/Master-ID7745> skos:narrower* ?term .
+   ?term skos:prefLabel ?termLabel .
+   FILTER(LANG(?termLabel) = 'nl') .
+}
