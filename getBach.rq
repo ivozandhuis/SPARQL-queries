@@ -1,0 +1,9 @@
+#+ summary: Get compositions by J.S. Bach in muziekschatten
+#+ endpoint: http://data.muziekschatten.nl/sparql
+
+PREFIX schema: <http://schema.org/>
+SELECT * WHERE {
+  ?piece 
+    a schema:MusicComposition;
+    schema:composer <http://data.muziekschatten.nl/som/86b1e335f541d825e1b6b0ead81fe1f1> .
+}
