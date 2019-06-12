@@ -1,0 +1,15 @@
+#+ summary: Count monuments in the Nederlandse per place
+#+ endpoint: http://linkeddata.cultureelerfgoed.nl/sparql
+
+PREFIX ceo: <https://linkeddata.cultureelerfgoed.nl/def/ceo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?plaats (COUNT(?plaats) AS ?plaatsCount)
+WHERE {
+ ?monument a ceo:Rijksmonument ;
+#           ceo:rijksmonumentnummer ?rijksmonumentnummer ;
+           ceo:heeftLocatieAanduiding/ceo:locatienaam ?plaats .
+ }
+GROUP BY ?plaats
+ORDER BY DESC(?plaatsCount)
