@@ -1,0 +1,16 @@
+#+ summary: Images of the City Archives Amsterdam via AdamNet/all
+#+ endpoint: https://api.druid.datalegend.net/datasets/adamnet/all/services/endpoint/sparql
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+
+SELECT * WHERE
+  { ?cho void:inDataset <https://data.adamlink.nl/saa/beeldbank/> ;
+         dc:title ?title ;
+         sem:hasEndTimeStamp ?date ;
+         foaf:depiction ?img .
+         BIND (year(xsd:dateTime(?date)) AS ?year) .
+         FILTER (?year < 1875) .
+  }
