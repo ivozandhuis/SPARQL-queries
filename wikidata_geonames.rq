@@ -1,0 +1,5 @@
+SELECT * WHERE {
+  ?place wdt:P131 <http://www.wikidata.org/entity/Q5093> ; # select places in Maluku
+         wdt:P1566 ?gnID;   
+         wdt:P625 ?_coordinates . 
+}
