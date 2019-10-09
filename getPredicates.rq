@@ -3,4 +3,6 @@
 
 SELECT ?pred COUNT(?pred) AS ?predCount WHERE {
   ?sub ?pred ?obj .
-} ORDER BY DESC(?predCount)
+} 
+GROUP BY ?pred
+ORDER BY DESC(?predCount)
