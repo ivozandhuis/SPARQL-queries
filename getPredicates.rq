@@ -1,5 +1,5 @@
 #+ summary: Get all Predicates
-#+ endpoint: <choose>
+#+ endpoint: http://data.bibliotheken.nl/sparql
 
 SELECT ?pred COUNT(?pred) AS ?predCount WHERE {
   ?sub ?pred ?obj .
