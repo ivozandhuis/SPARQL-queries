@@ -1,0 +1,10 @@
+#+ summary: Get all objects with a certain predicate
+#+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+SELECT ?obj COUNT(?obj) AS ?objCount WHERE {
+  ?sub dc:type ?obj .
+} 
+GROUP BY ?obj
+ORDER BY DESC(?objCount)

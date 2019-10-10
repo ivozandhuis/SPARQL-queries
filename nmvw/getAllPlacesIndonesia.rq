@@ -1,0 +1,9 @@
+#+ summary: Get all narrower-terms in the branch of a SKOS-thesaurus, in this instance "Indonesia".
+#+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW/sparql
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT * WHERE {
+   <https://hdl.handle.net/20.500.11840/termmaster7745> skos:narrower* ?concept .
+   ?concept skos:prefLabel ?term .
+}
