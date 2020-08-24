@@ -1,0 +1,15 @@
+#+ summary: Find manifestations of Works by Charles Dickens in the Bibliotheque Nationale de France
+#+ endpoint: https://data.bnf.fr/sparql
+
+PREFIX rdarelationships: <http://rdvocab.info/RDARelationshipsWEMI/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX frbr: <http://rdvocab.info/uri/schema/FRBRentitiesRDA/>
+
+SELECT ?manifestation ?title ?date
+WHERE {
+  ?manifestation rdarelationships:workManifested ?work ;
+                 dcterms:title ?title .
+  OPTIONAL { ?manifestation dcterms:date ?date }.
+  ?work a frbr:Work ;
+  		dcterms:creator <http://data.bnf.fr/ark:/12148/cb119001186#about> .
+} ORDER BY ?date

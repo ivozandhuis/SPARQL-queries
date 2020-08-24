@@ -1,0 +1,15 @@
+#+ summary: Find works by Charles Dickens in the Nederlandse Bibliografie Totaal (NBT)
+#+ endpoint: http://data.bibliotheken.nl/sparql
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX schema: <http://schema.org/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT * WHERE {
+  ?pub foaf:isPrimaryTopicOf/void:inDataset <http://data.bibliotheken.nl/id/dataset/nbt> ;
+       rdfs:label ?title ;
+       schema:author/owl:sameAs <http://viaf.org/viaf/88666393> ; # Charles Dickens
+       schema:publication/schema:startDate ?date .
+} ORDER BY ?date

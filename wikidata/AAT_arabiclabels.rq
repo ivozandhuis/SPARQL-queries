@@ -1,0 +1,12 @@
+#+ endpoint: https://query.wikidata.org/sparql
+
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT *
+WHERE 
+{
+  ?item wdt:P1014 ?aatID .
+  ?item rdfs:label ?itemLabel .
+  FILTER (lang(?itemLabel) = "ar").
+}

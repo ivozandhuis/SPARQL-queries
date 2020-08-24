@@ -1,0 +1,10 @@
+#+ summary: Find Charles Dickens in the Bibliotheque Nationale de France
+#+ endpoint: https://data.bnf.fr/sparql
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT *
+WHERE {
+  ?pers a skos:Concept ;
+        skos:prefLabel ?name ;
+        skos:exactMatch <http://viaf.org/viaf/88666393/> .
+}
